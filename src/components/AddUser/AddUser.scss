@@ -1,0 +1,16 @@
+.User-Form {
+    margin: 20PX auto;
+    text-align: left;
+    width: 80%;
+    box-shadow: 0 2px 3px #ccc;
+    border: 10px solid #F9F9FA;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+@media(min-width:600px) {
+    .User-Form {
+        width: 500px;
+    }
+}
