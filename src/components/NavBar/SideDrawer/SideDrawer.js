@@ -1,24 +1,22 @@
 import React from 'react';
-import NavBarItemsR from '../NavBarItems/NavigationItems';
+import NavigationItems from '../NavBarItems/NavigationItems'
 
-import './SideDrawer.scss';
-import Bachdrop from './../../Ui/Backdrop/Backdrop';
+import  './SideDrawer.scss';
+import Bachdrop from '../Backdrop/Backdrop';
 const sideDrawer = (props) => {
-    let attachedClasses = ['SideDrawer', 'Close'];
+    let attachedClasses = ['SideDrawer','Close'];
     if (props.open) {
-        attachedClasses = ['SideDrawer', 'Open']
+        attachedClasses = ['SideDrawer','Open']
     }
 
     return (
         <React.Fragment>
             <Bachdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}
-                onClick={props.closed}>
-                <div className='Side-Logo'>
-                 
-                </div>
-                <nav>
-                    <NavBarItemsR />
+            onClick={props.closed}>
+    
+                <nav >
+                    <NavigationItems/>
                 </nav>
             </div>
         </React.Fragment>

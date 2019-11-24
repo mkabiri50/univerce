@@ -8,8 +8,6 @@ const initialState = {
 
 }
 const reducer = (state = initialState, action) => {
-state.personInfo.map(p=>console.log(p.id,'gggoooozzzz'))
-  console.log(state.personInfo,'eeee')
   switch (action.type) {
     case actionType.ADD_PERSON:
       return {

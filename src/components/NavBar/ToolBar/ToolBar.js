@@ -4,9 +4,9 @@ import './ToolBar.scss';
 import Logo from '../../Logo/Logo';
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 import NavBarItems from '../NavBarItems/NavigationItems';
-const toolbar = () => (
+const toolbar = (props) => (
     <header className='Toolbar'>
-      <DrawerToggle />
+      <DrawerToggle clicked={props.drawerToggleclicked} />
         <div className ='My-Logo'> 
         <Logo />
         </div>
