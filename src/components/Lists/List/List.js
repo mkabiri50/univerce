@@ -13,6 +13,7 @@ const ListItems = props => {
   return (
 <tr>
 {pInfo.map((pl, i) => {
+  if(pl.name==='id')return null
     return (
       <td key={i}>
         <p style={{ fontSize: 25 }}>{pl.value}</p>
@@ -21,8 +22,8 @@ const ListItems = props => {
   })
 }
 <td>
-<Icon classes="fa fa-trash" color='red' onClick={(id) => props.remove(id)} />
-<Icon classes="fa fa-pencil" />
+<Icon classes="fa fa-trash" color='red' onClick={props.remove} />
+<Icon classes="fa fa-pencil" onClick={props.edit} />
 </td>
 
 

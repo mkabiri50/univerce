@@ -12,9 +12,19 @@ export const deletePerson =(id)=>{
         id:id
     }
 }
-export const editPerson =(id)=>{
+export const startEditing =(info,id)=>{
+    return{
+        type:actionTypes.START_EDITING,
+        info:info,
+        id:id
+    }
+}
+
+
+export const editPerson =(value,id)=>{
     return{
         type:actionTypes.EDIT_PERSON,
-        id:id
+        id:id,
+        value:value
     }
 }

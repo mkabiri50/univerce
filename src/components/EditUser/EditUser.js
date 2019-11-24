@@ -1,67 +1,77 @@
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {Redirect} from 'react-router-dom'
 import { Formik } from "formik";
 import FormikStyle from "../Ui/form";
-import './AddUser.scss'
 import * as actions from "../../store/actions/index";
-import * as yup from "yup";
+class EditUser extends Component {
+  state = {
+    data: []
+  };
+  componentWillMount() {
+    this.setState({ data: this.props.data });
+  }
 
-class AddUser extends Component {
-  render() {
-
-    const validationSchema = yup.object().shape({
-      firstName: yup
-        .string()
-        .label("First Name")
-        .required(),
-      family: yup
-        .string()
-        .label("Family")
-        .required(),
-      email: yup
-        .string()
-        .label("Email")
-        .email()
-        .required(),
-      age: yup
-        .number()
-        .required()
-        .label("Age")
+  handelChange = (event, key) => {
+    this.setState(preveState => {
+      return {
+        data: {
+          ...preveState.data,
+          [key]: {
+            ...preveState.data[key],
+            value: event
+          }
+        }
+      };
     });
+  };
+
+  render() {
+    
+    const { data } = this.state;
+    if (data.length ===0){
+      return <Redirect to='/houses' />
+   }
     return (
+  
       <Formik
-        initialValues={{ firstName: "", family: "", email: "", age: "" }}
+        initialValues={{ firstName: data.firstName, family:data.family, email:data.email, age:data.age }}
         onSubmit={(values, actions) => {
-          this.props.omSubmit(values);
+          this.props.onEdit(values, data.id);
           setTimeout(() => {
             actions.setSubmitting(false);
             this.props.history.push("/lists");
           }, 100);
         }}
-        validationSchema={validationSchema}
+   
       >
         {formikProps => (
-          <div className="User-Form">
+          <div >
             <FormikStyle
               label="First Name"
               formikProps={formikProps}
               formikKey="firstName"
+              placeholder={data.firstName}
               autoFocus
             />
             <FormikStyle
               label="Family"
               formikProps={formikProps}
               formikKey="family"
+              placeholder={data.family}
             />
             <FormikStyle
               label="Email"
               formikProps={formikProps}
               formikKey="email"
+              placeholder={data.email}
             />
             <FormikStyle
               label="Age"
               formikProps={formikProps}
               formikKey="age"
+              placeholder={data.age}
             />
 
             <button
@@ -85,16 +95,15 @@ class AddUser extends Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
-    personInfo: state.persons.personInfo
+    data: state.persons.data
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    omSubmit: values => dispatch(actions.addPerson(values))
+     onEdit: (id,values) => dispatch(actions.editPerson(id,values))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddUser);
+export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

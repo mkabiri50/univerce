@@ -5,39 +5,56 @@ import List from "./List/List";
 import "./Lists.scss";
 
 class Lists extends Component {
+  state = {
+    modalOpen: false,
+  };
+  editHandler =(info,id) => {
+    this.props.onStartEdit(info,id)
+    this.props.history.push( `/user/id: ${id} `);
+  };
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.personInfo.map((info, i) => (
+      <React.Fragment>
+        <table>
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.personInfo.map((info,i) => (
+          
               <List
-                key={i}
+                key={info.id} 
                 personInfo={info}
                 remove={() => this.props.onRemove(i)}
+                edit={() => this.editHandler(info,info.id)}
               />
-          ))}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+
+
+      </React.Fragment>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    personInfo: state.persons.personInfo
+    personInfo: state.persons.personInfo,
+    data: state.persons.data
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onRemove: i => dispatch(actions.deletePerson(i))
+    onRemove: id => dispatch(actions.deletePerson(id)),
+    onStartEdit: info => dispatch(actions.startEditing(info)),
+    onEdit: i => dispatch(actions.editPerson(i))
+
   };
 };
 

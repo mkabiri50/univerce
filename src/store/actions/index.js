@@ -1,1 +1,1 @@
-export  {addPerson,deletePerson, editPerson} from './persons';
+export  {addPerson,deletePerson,startEditing, editPerson} from './persons';
