@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "be5f9cd60d663a18b68623edf114392b",
+    "revision": "2f33a334fb1ce773222d88c7fdb961f5",
     "url": "/univerce/index.html"
   },
   {
-    "revision": "eedcd4b6c2f602d39e05",
+    "revision": "ef850e0b1f346fbfe58e",
     "url": "/univerce/static/css/2.3291aa16.chunk.css"
   },
   {
-    "revision": "bade9d96084e3358e05a",
-    "url": "/univerce/static/css/main.adc0866a.chunk.css"
+    "revision": "a46091bb45eb9ccddd93",
+    "url": "/univerce/static/css/main.00660905.chunk.css"
   },
   {
-    "revision": "eedcd4b6c2f602d39e05",
-    "url": "/univerce/static/js/2.a2d80f55.chunk.js"
+    "revision": "ef850e0b1f346fbfe58e",
+    "url": "/univerce/static/js/2.cb5d6d2f.chunk.js"
   },
   {
-    "revision": "bade9d96084e3358e05a",
-    "url": "/univerce/static/js/main.80f6e89f.chunk.js"
+    "revision": "a46091bb45eb9ccddd93",
+    "url": "/univerce/static/js/main.3f841d40.chunk.js"
   },
   {
     "revision": "dc90effd8789edc39fa4",
